@@ -49,7 +49,7 @@ function App() {
           gas: 300000,
           gasPrice: null
         }
-      )
+      ) 
       setUpdate((pre) => !pre);
       alert("purchase success");
     }catch(error){

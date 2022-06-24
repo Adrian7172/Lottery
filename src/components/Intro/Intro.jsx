@@ -1,7 +1,7 @@
 import "./styles.css";
 import { BiRightArrowCircle } from "react-icons/bi";
 
-const Intro = (onClick) => {
+const Intro = ({onClick}) => {
   return (
     <section className="intro">
       <div className="intro__text">

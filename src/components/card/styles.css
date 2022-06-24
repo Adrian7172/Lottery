@@ -1,0 +1,14 @@
+.card{
+    background-color: aliceblue;
+    width: 80%;
+    height: max-content;
+    background-color: transparent;
+    border: 1.5px solid;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    padding: 1.5rem;
+    color: white;
+}

@@ -1,0 +1,16 @@
+.players{
+    width: 100%;
+    height: max-content;
+    margin-bottom: 20rem;
+    display: flex;
+}
+
+.marginbottom{
+    margin-bottom: 5rem;
+}
+
+@media screen and (max-width: 850px) {
+    .players{
+        flex-direction: column;
+    }
+}

@@ -33,6 +33,7 @@ body {
 }
 
 .app {
+  padding: 0 1.5rem;
   max-width: 115rem;
   margin: auto;
 }

@@ -11,4 +11,15 @@
     font-size: 1.8rem;
     padding: 1.5rem;
     color: white;
+    margin-bottom: 2rem;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+    text-decoration: underline;
 }

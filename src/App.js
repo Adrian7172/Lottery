@@ -13,19 +13,72 @@ import lotteryContract from './blockchain/lottery'
 
 function App() {
   const [web3, setWeb3] = useState();
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState(null);
   const [lcContract, setLcContract] = useState();
-  const [lotteryPot, setLotteryPot] = useState()
+  const [lotteryPot, setLotteryPot] = useState();
+  const [lotteryPlayers, setLotteryPlayers] = useState([]);
+  const [update, setUpdate] = useState(false);
 
 
   useEffect(() =>{
-    if(lcContract) getPot()
-  }, [lcContract, lotteryPot])
+    if(lcContract) {
+      getPot();
+      getPlayers();
+    }
+  }, [lcContract, update])
 
+  //for getting the pot balance
   const getPot = async () =>{
     const pot = await lcContract.methods.getContractBalance().call()
-    setLotteryPot(pot)
+    setLotteryPot(web3.utils.fromWei(pot, 'ether'))
   }
+  
+  //for getting all the players join the lottery
+  const getPlayers = async () =>{
+    const players = await lcContract.methods.getAppliedPlayers().call()
+    setLotteryPlayers(players);
+  }
+
+  //purchase button
+  const purchaseLotteryHandler = async() =>{
+    try{
+      await lcContract.methods.Apply().send(
+        {
+          from: account,
+          value: web3.utils.toWei('0.01', 'ether'),
+          gas: 300000,
+          gasPrice: null
+        }
+      )
+      setUpdate((pre) => !pre);
+      alert("purchase success");
+    }catch(error){
+      alert(error.message);
+    }
+  }
+  
+  
+  //pick winner 
+  const pickWinnerHandler = async() =>{
+    try{
+      await lcContract.methods.pickWinner().send(
+        {
+          from: account,
+          gas: 300000,
+          gasPrice: null
+        }
+        )
+        setUpdate((pre) => !pre);
+        alert("success");
+      }catch(error){
+        alert(error.message);
+    }
+  }
+
+
+
+
+  
 
   const connectWallet = async () => {
     //checking metamask is installed or not
@@ -59,8 +112,8 @@ function App() {
     <div className="app">
       <Navbar onClick={connectWallet}  account={account} />
       <Intro onClick={connectWallet} />
-      <Main />
-      <Players lotteryPot = {lotteryPot}/>
+      <Main purchaseLotteryHandler={purchaseLotteryHandler} pickWinnerHandler={pickWinnerHandler}/>
+      <Players lotteryPot = {lotteryPot} players = {lotteryPlayers}/>
       <History />
       <Footer />
     </div>

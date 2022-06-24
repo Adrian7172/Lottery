@@ -1,16 +1,20 @@
 import React from "react";
 import Card from "../card/Card";
 import "./styles.css"
-const Players = ({lotteryPot}) => {
+const Players = ({lotteryPot, players}) => {
+  console.log(players)
   return <div className="players">
      <div className="main__left">
       <h2 className="left__heading marginbottom">Pot Balance</h2>
-    <Card pot={lotteryPot}/>
+    <Card pot={lotteryPot} player = {undefined}/>
       
     </div>
     <div className="main__right"> 
-    <h2 className="left__heading marginbottom">Players join the Lottery(1)</h2>
-    <Card pot = {null} />
+    <h2 className="left__heading marginbottom">Players join the Lottery({players.length})</h2>
+    {(players&& players.length > 0) &&players.map((player, index) =>{
+      return<Card key={index}pot = {null} player = {player} />
+
+    })}
       </div>
   </div>;
 };

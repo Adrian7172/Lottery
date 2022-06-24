@@ -1,6 +1,6 @@
 import "./styles.css";
 
-const Navbar = ({onClick, account= null}) => {
+const Navbar = ({onClick, account}) => {
   return (
     <div className="navbar">
       <span className="logo">

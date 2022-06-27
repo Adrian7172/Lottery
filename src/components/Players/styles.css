@@ -8,6 +8,11 @@
 .marginbottom{
     margin-bottom: 5rem;
 }
+.main__right__subtext{
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
 
 @media screen and (max-width: 850px) {
     .players{

@@ -11,21 +11,7 @@ html {
 
 body {
   min-height: 100vh;
-  background-image: linear-gradient(
-    to bottom,
-    #31020f,
-    #2a0719,
-    #210c1e,
-    #180f1e,
-    #12111b,
-    #10111d,
-    #0e111e,
-    #0a1120,
-    #061129,
-    #030f32,
-    #010e3b,
-    #050a42
-  );
+  background-image: linear-gradient(to right top, #0c2953, #402f63, #6e3069, #973263, #b73c53);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

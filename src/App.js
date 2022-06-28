@@ -101,17 +101,17 @@ function App() {
 
   // get the history of winner
   const getHistory = async (id) => {
-    if(preId < parseInt(id)){
-      setPreId( parseInt(id));
+    if (preId < parseInt(id)) {
+      setPreId(parseInt(id));
       setLotteryHistory([]);
-    for (let i = parseInt(id) - 1; i >= 0; i--) {
-      const winnerAddress = await lcContract.methods.winnersHistory(i).call()
-      const historyObj = {};
-      historyObj.id = i
-      historyObj.address = winnerAddress;
-      setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
+      for (let i = parseInt(id) - 1; i >= 0; i--) {
+        const winnerAddress = await lcContract.methods.winnersHistory(i).call()
+        const historyObj = {};
+        historyObj.id = i
+        historyObj.address = winnerAddress;
+        setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
+      }
     }
-  }
 
   }
 
@@ -139,12 +139,12 @@ function App() {
         const account = accounts[0];
         setAccount(account);
         alert("Account connected");
-        
+
         //create localContract copy
         const lc = lotteryContract(web3);
         setLcContract(lc);
         setPreId(-1);
-        
+
         window.ethereum.on('accountsChanged', async () => {
           const accounts = await web3.eth.getAccounts();
           const account = accounts[0];

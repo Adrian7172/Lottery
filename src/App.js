@@ -144,6 +144,7 @@ function App() {
         const lc = lotteryContract(web3);
         setLcContract(lc);
         setPreId(-1);
+        
         window.ethereum.on('accountsChanged', async () => {
           const accounts = await web3.eth.getAccounts();
           const account = accounts[0];
